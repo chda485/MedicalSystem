@@ -1,0 +1,14 @@
+G:\projects\C#\projects\МедСистема\MedicalSystemServer\bin\Debug\MedicalSystemServer.exe.config
+G:\projects\C#\projects\МедСистема\MedicalSystemServer\bin\Debug\MedicalSystemServer.exe
+G:\projects\C#\projects\МедСистема\MedicalSystemServer\bin\Debug\MedicalSystemServer.pdb
+G:\projects\C#\projects\МедСистема\MedicalSystemServer\obj\Debug\MedicalSystemServer.csprojAssemblyReference.cache
+G:\projects\C#\projects\МедСистема\MedicalSystemServer\obj\Debug\MedicalSystemServer.csproj.CoreCompileInputs.cache
+G:\projects\C#\projects\МедСистема\MedicalSystemServer\obj\Debug\MedicalSystemServer.exe
+G:\projects\C#\projects\МедСистема\MedicalSystemServer\obj\Debug\MedicalSystemServer.pdb
+E:\projects\C#\projects\МедСистема\MedicalSystemServer\bin\Debug\MedicalSystemServer.exe.config
+E:\projects\C#\projects\МедСистема\MedicalSystemServer\bin\Debug\MedicalSystemServer.exe
+E:\projects\C#\projects\МедСистема\MedicalSystemServer\bin\Debug\MedicalSystemServer.pdb
+E:\projects\C#\projects\МедСистема\MedicalSystemServer\obj\Debug\MedicalSystemServer.csproj.CoreCompileInputs.cache
+E:\projects\C#\projects\МедСистема\MedicalSystemServer\obj\Debug\MedicalSystemServer.exe
+E:\projects\C#\projects\МедСистема\MedicalSystemServer\obj\Debug\MedicalSystemServer.pdb
+E:\projects\C#\projects\МедСистема\MedicalSystemServer\obj\Debug\MedicalSystemServer.csprojAssemblyReference.cache
