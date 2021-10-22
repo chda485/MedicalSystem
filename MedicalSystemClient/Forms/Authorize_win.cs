@@ -101,20 +101,17 @@ namespace MedicalSystemClient
                     	//если это работник регистратуры
                     	else if (dopusk == 2)
                     	{
-                    		registratura registr_win = new registratura(fio, this);
+                    		registratura registr_win = new registratura(fio, this, socket);
                             this.Hide();
                     		registr_win.Show();
                     	}
                     }
-
                 }                    
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
             }
-            socket.Shutdown(SocketShutdown.Both);
-            socket.Close();
         }
 
         private bool CheckAnswer(string answer, int type_check)

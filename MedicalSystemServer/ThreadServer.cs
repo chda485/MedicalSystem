@@ -20,7 +20,7 @@ namespace MedicalSystemServer
         private List <string> message_list = new List<string>();
         //словарь типов сообщений серверу и соответсвующих кодов
         private Dictionary<string, int> typeDict = new Dictionary<string, int>() {
-            {"select_user", 0 }, {"select", 1}, {"insert", 2}
+            {"select_user", 0 }, {"select", 1}, {"insert", 2}, {"disconnect", 3}
         };
         //отсылаемые клиенту данные
         private string answer = "@";
@@ -39,10 +39,10 @@ namespace MedicalSystemServer
         public void doConnect()
         {
             try
-            {
+            {				
                 byte[] data = new byte[1024];
                 StringBuilder builder = new StringBuilder();
-                int bytes = 0;
+                int bytes = 0, x = 0;
                 while (true)
                 {
                     //очищаем следы предыдущих запросов
@@ -71,6 +71,12 @@ namespace MedicalSystemServer
                     //записываем в журнальную БД кто подключился и что прислал
                     try
                     {
+                        //проверяем счётчик, чтобы записать один раз при подключении
+                        if (x == 0)
+                        {
+                            this.Make_Log("user", 0);
+                            x++;
+                        }
                         this.Make_Log("connect_message", data.Length);
                     }
                     catch(Exception ex)
@@ -82,10 +88,20 @@ namespace MedicalSystemServer
                     if (type == -1)
                     {                     
                         this.answer += DateTime.Now.ToShortTimeString() + ';' + message_list[1] + ";" + this.error + "//@";
-                    
-					//ТУТ СДЕЛАТЬ ЗАПИСЬ В СЛУЖЕБНУЮ БД ОБ ОШИБКАХ
-					
+						//записываем в журнальную БД сообщение об ошибке
+						try
+						{
+							this.Make_Log("error", data.Length);
+						}
+						catch(Exception ex)
+						{
+							Console.WriteLine(ex.Message);
+						}					
 					}
+                    else if(type == 3)
+                    {
+                        break;
+                    }
                     //если запрос для авторизации в системе
                     else if(type == 0)
                     {
@@ -157,6 +173,16 @@ namespace MedicalSystemServer
                 Console.WriteLine(ex.Message);
             }
             socket.Shutdown(SocketShutdown.Both);
+            Console.WriteLine("Check2");
+			//записываем время отключения
+			try
+			{
+				this.Make_Log("user", 1);
+			}
+			catch(Exception ex)
+			{
+				Console.WriteLine(ex.Message);
+			}
             socket.Close();
         }
         
@@ -267,40 +293,55 @@ namespace MedicalSystemServer
 				string con_time = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
 				string q_type = this.message_list[0];
                 string server_reply = "", queary = "";
-				if (type == "connect_message")
-				{				
-					queary = String.Format(@"INSERT INTO Connections (User_name, Connection_time, Queary_type, Message_volume)
+                if (type == "connect_message")
+                {
+                    queary = String.Format(@"INSERT INTO Connections (User_name, Connection_time, Queary_type, Message_volume)
 										    VALUES ('{0}', '{1}', '{2}', '{3}')", user, con_time, q_type, volume);
-				}
-				else if (type == "response")
-				{
+                }
+                else if (type == "response")
+                {
                     if (results.Count == 0)
                     {
                         server_reply = "DB doen't have the needed data";
                         //добавляем пустышку для корректной работы swicth снизу
                         results.Add("0");
-                    }                      
+                    }
                     else if (this.help_string == "User exist")
                         server_reply = "Data about user is sended";
                     else if (results.Count > 0 && results[0] != "0")
                         server_reply = "Data is sended to the client";
-					
-					switch (results[0])
-					{
+
+                    switch (results[0])
+                    {
                         case "такой пользователь отсутствует в системе": server_reply = "Message the unexisting user"; break;
                         case "success insert": server_reply = "Data is inserted"; break;
-						case "unsuccess insert":
-						case "error": server_reply = "Error while inserting the data"; break;
-						case "date already existed": server_reply = "Attempt to insert existing data"; break;
-					}																
-					queary = String.Format(@"INSERT INTO Responses (User_name, Response_time, Response, Response_volume)
+                        case "unsuccess insert":
+                        case "error": server_reply = "Error while inserting the data"; break;
+                        case "date already existed": server_reply = "Attempt to insert existing data"; break;
+                    }
+                    queary = String.Format(@"INSERT INTO Responses (User_name, Response_time, Response, Response_volume)
 										     VALUES ('{0}', '{1}', '{2}', '{3}')", user, con_time, server_reply, volume);
-				}
-				else if (type == "error")
-				{
+                }
+                else if (type == "error")
+                {
                     queary = String.Format(@"INSERT INTO Errors (User_name, Time_error, Error)
                                             VALUES ('{0}', '{1}', '{2}')", user, con_time, this.error);
-				}
+                }
+                else if (type == "user")
+                {
+                    if (volume == 0)
+                    {
+                        queary = String.Format(@"INSERT INTO Users (User_name, Time_con)
+												VALUES ('{0}', '{1}')", user, con_time);
+                    }
+                    else if (volume == 1)
+                    {
+                        string discon_time = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
+                        queary = String.Format(@"UPDATE Users SET Time_discon='{0}'
+												WHERE User_name = '{1}' AND Id = (
+                                                SELECT MAX(Id) FROM Users WHERE User_name = '{2}')", discon_time, user, user);
+                    }
+                }
                 SqlCommand command = new SqlCommand(queary, connect);
                 int num = command.ExecuteNonQuery();
                 if (num == 0)

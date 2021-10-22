@@ -13,7 +13,6 @@ namespace MedicalSystemServer
 {
     class ServerClass
     {
-        private static string connection = @"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=Patients;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
         static int port = 8005;
         static void Main(string[] args)
         {
@@ -24,16 +23,24 @@ namespace MedicalSystemServer
                 listener.Bind(ipPoint);
                 listener.Listen(10);
                 Console.WriteLine("Server started");
-
+                Console.WriteLine(DateTime.Now.DayOfWeek.ToString());
                 while (true)
                 {
                     Socket handler = listener.Accept();
                     ThreadServer client = new ThreadServer(handler);
                     Thread thread = new Thread(new ThreadStart(client.doConnect));
-					
-					//ЗДЕСЬ СОЗДАТЬ ВРЕМЕННУЮ ТАБЛИЦУ В СЛУЖЕБНОЙ БД ПО ПОДКЛЮЧЁННЫМ КЛИЕНТАМ
-					
                     thread.Start();
+                    if (DateTime.Now.TimeOfDay.ToString().Split('.')[0] == "00:00:00" && 
+                        DateTime.Now.DayOfWeek.ToString() == "Monday")
+                    {
+                        string connection = @"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=ServiceDB;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
+                        using (SqlConnection connect = new SqlConnection(connection))
+                        {
+                            connect.Open();
+                            SqlCommand command = new SqlCommand("DELETE FROM Users;", connect);
+                            command.ExecuteNonQuery();
+                        }
+                    }
                 }
             }
             catch (Exception ex)

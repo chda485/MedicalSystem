@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.label1 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
+            this.timeLb = new System.Windows.Forms.Label();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.User_view = new System.Windows.Forms.TextBox();
             this.findBt = new System.Windows.Forms.Button();
@@ -43,7 +43,6 @@
             this.changeBt = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
@@ -52,7 +51,6 @@
             this.label11 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
             this.family = new System.Windows.Forms.TextBox();
-            this.areaNum = new System.Windows.Forms.TextBox();
             this.phone = new System.Windows.Forms.TextBox();
             this.age = new System.Windows.Forms.TextBox();
             this.snils = new System.Windows.Forms.TextBox();
@@ -61,6 +59,10 @@
             this.passportNum = new System.Windows.Forms.TextBox();
             this.otchestvo = new System.Windows.Forms.TextBox();
             this.name = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.areaNum = new System.Windows.Forms.TextBox();
+            this.job = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // label1
@@ -73,16 +75,16 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "Регистратура";
             // 
-            // label3
+            // timeLb
             // 
-            this.label3.AutoSize = true;
-            this.label3.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.label3.Font = new System.Drawing.Font("Times New Roman", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label3.Location = new System.Drawing.Point(687, 15);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(90, 25);
-            this.label3.TabIndex = 2;
-            this.label3.Text = "##:##:##";
+            this.timeLb.AutoSize = true;
+            this.timeLb.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.timeLb.Font = new System.Drawing.Font("Times New Roman", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.timeLb.Location = new System.Drawing.Point(687, 15);
+            this.timeLb.Name = "timeLb";
+            this.timeLb.Size = new System.Drawing.Size(90, 25);
+            this.timeLb.TabIndex = 2;
+            this.timeLb.Text = "##:##:##";
             // 
             // textBox1
             // 
@@ -209,16 +211,6 @@
             this.label4.TabIndex = 16;
             this.label4.Text = "Телефон";
             // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label5.Location = new System.Drawing.Point(28, 472);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(87, 21);
-            this.label5.TabIndex = 17;
-            this.label5.Text = "№ округа";
-            // 
             // label6
             // 
             this.label6.AutoSize = true;
@@ -297,14 +289,6 @@
             this.family.Size = new System.Drawing.Size(166, 29);
             this.family.TabIndex = 25;
             // 
-            // areaNum
-            // 
-            this.areaNum.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.areaNum.Location = new System.Drawing.Point(167, 469);
-            this.areaNum.Name = "areaNum";
-            this.areaNum.Size = new System.Drawing.Size(166, 29);
-            this.areaNum.TabIndex = 26;
-            // 
             // phone
             // 
             this.phone.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
@@ -369,11 +353,49 @@
             this.name.Size = new System.Drawing.Size(166, 29);
             this.name.TabIndex = 34;
             // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label5.Location = new System.Drawing.Point(28, 472);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(87, 21);
+            this.label5.TabIndex = 17;
+            this.label5.Text = "№ округа";
+            // 
+            // areaNum
+            // 
+            this.areaNum.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.areaNum.Location = new System.Drawing.Point(167, 469);
+            this.areaNum.Name = "areaNum";
+            this.areaNum.Size = new System.Drawing.Size(166, 29);
+            this.areaNum.TabIndex = 26;
+            // 
+            // job
+            // 
+            this.job.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.job.Location = new System.Drawing.Point(167, 504);
+            this.job.Name = "job";
+            this.job.Size = new System.Drawing.Size(166, 29);
+            this.job.TabIndex = 36;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label3.Location = new System.Drawing.Point(28, 507);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(91, 21);
+            this.label3.TabIndex = 35;
+            this.label3.Text = "Занятость";
+            // 
             // registratura
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 540);
+            this.ClientSize = new System.Drawing.Size(800, 553);
+            this.Controls.Add(this.job);
+            this.Controls.Add(this.label3);
             this.Controls.Add(this.name);
             this.Controls.Add(this.otchestvo);
             this.Controls.Add(this.passportNum);
@@ -405,7 +427,7 @@
             this.Controls.Add(this.findBt);
             this.Controls.Add(this.User_view);
             this.Controls.Add(this.textBox1);
-            this.Controls.Add(this.label3);
+            this.Controls.Add(this.timeLb);
             this.Controls.Add(this.label1);
             this.Name = "registratura";
             this.Text = "Окно регистратуры";
@@ -417,7 +439,7 @@
         #endregion
 
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label timeLb;
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.TextBox User_view;
         private System.Windows.Forms.Button findBt;
@@ -431,7 +453,6 @@
         private System.Windows.Forms.Button changeBt;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label8;
@@ -440,7 +461,6 @@
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.TextBox family;
-        private System.Windows.Forms.TextBox areaNum;
         private System.Windows.Forms.TextBox phone;
         private System.Windows.Forms.TextBox age;
         private System.Windows.Forms.TextBox snils;
@@ -449,5 +469,9 @@
         private System.Windows.Forms.TextBox passportNum;
         private System.Windows.Forms.TextBox otchestvo;
         private System.Windows.Forms.TextBox name;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.TextBox areaNum;
+        private System.Windows.Forms.TextBox job;
+        private System.Windows.Forms.Label label3;
     }
 }
