@@ -112,6 +112,7 @@
             this.findBt.TabIndex = 6;
             this.findBt.Text = "button1";
             this.findBt.UseVisualStyleBackColor = true;
+            this.findBt.Click += new System.EventHandler(this.findBt_click);
             // 
             // prevBt
             // 
@@ -139,6 +140,7 @@
             this.clearBt.TabIndex = 9;
             this.clearBt.Text = "button4";
             this.clearBt.UseVisualStyleBackColor = true;
+            this.clearBt.Click += new System.EventHandler(this.clearBt_click);
             // 
             // exitBt
             // 
@@ -287,7 +289,7 @@
             this.family.Location = new System.Drawing.Point(167, 138);
             this.family.Name = "family";
             this.family.Size = new System.Drawing.Size(166, 29);
-            this.family.TabIndex = 25;
+            this.family.TabIndex = 1;
             // 
             // phone
             // 
@@ -295,7 +297,7 @@
             this.phone.Location = new System.Drawing.Point(167, 434);
             this.phone.Name = "phone";
             this.phone.Size = new System.Drawing.Size(166, 29);
-            this.phone.TabIndex = 27;
+            this.phone.TabIndex = 9;
             // 
             // age
             // 
@@ -303,7 +305,7 @@
             this.age.Location = new System.Drawing.Point(167, 399);
             this.age.Name = "age";
             this.age.Size = new System.Drawing.Size(166, 29);
-            this.age.TabIndex = 28;
+            this.age.TabIndex = 8;
             // 
             // snils
             // 
@@ -311,7 +313,7 @@
             this.snils.Location = new System.Drawing.Point(167, 364);
             this.snils.Name = "snils";
             this.snils.Size = new System.Drawing.Size(166, 29);
-            this.snils.TabIndex = 29;
+            this.snils.TabIndex = 7;
             // 
             // address
             // 
@@ -319,7 +321,7 @@
             this.address.Location = new System.Drawing.Point(167, 329);
             this.address.Name = "address";
             this.address.Size = new System.Drawing.Size(166, 29);
-            this.address.TabIndex = 30;
+            this.address.TabIndex = 6;
             // 
             // passportSer
             // 
@@ -327,7 +329,7 @@
             this.passportSer.Location = new System.Drawing.Point(167, 294);
             this.passportSer.Name = "passportSer";
             this.passportSer.Size = new System.Drawing.Size(166, 29);
-            this.passportSer.TabIndex = 31;
+            this.passportSer.TabIndex = 5;
             // 
             // passportNum
             // 
@@ -335,7 +337,7 @@
             this.passportNum.Location = new System.Drawing.Point(167, 254);
             this.passportNum.Name = "passportNum";
             this.passportNum.Size = new System.Drawing.Size(166, 29);
-            this.passportNum.TabIndex = 32;
+            this.passportNum.TabIndex = 4;
             // 
             // otchestvo
             // 
@@ -343,7 +345,7 @@
             this.otchestvo.Location = new System.Drawing.Point(167, 216);
             this.otchestvo.Name = "otchestvo";
             this.otchestvo.Size = new System.Drawing.Size(166, 29);
-            this.otchestvo.TabIndex = 33;
+            this.otchestvo.TabIndex = 3;
             // 
             // name
             // 
@@ -351,7 +353,7 @@
             this.name.Location = new System.Drawing.Point(167, 176);
             this.name.Name = "name";
             this.name.Size = new System.Drawing.Size(166, 29);
-            this.name.TabIndex = 34;
+            this.name.TabIndex = 2;
             // 
             // label5
             // 
@@ -369,7 +371,7 @@
             this.areaNum.Location = new System.Drawing.Point(167, 469);
             this.areaNum.Name = "areaNum";
             this.areaNum.Size = new System.Drawing.Size(166, 29);
-            this.areaNum.TabIndex = 26;
+            this.areaNum.TabIndex = 10;
             // 
             // job
             // 
@@ -377,7 +379,7 @@
             this.job.Location = new System.Drawing.Point(167, 504);
             this.job.Name = "job";
             this.job.Size = new System.Drawing.Size(166, 29);
-            this.job.TabIndex = 36;
+            this.job.TabIndex = 11;
             // 
             // label3
             // 

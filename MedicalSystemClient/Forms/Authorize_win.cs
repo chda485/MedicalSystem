@@ -94,14 +94,14 @@ namespace MedicalSystemClient
                     	//если это врач
                     	if (dopusk == 1)
                     	{
-                    		doctor doctor_win = new doctor(fio, this);
+                    		doctor doctor_win = new doctor(fio, this, socket, this.name, this.passw);
                     		doctor_win.Show();
                     		this.Hide();
                     	}
                     	//если это работник регистратуры
                     	else if (dopusk == 2)
                     	{
-                    		registratura registr_win = new registratura(fio, this, socket);
+                    		registratura registr_win = new registratura(fio, this, socket, this.name, this.passw);
                             this.Hide();
                     		registr_win.Show();
                     	}
