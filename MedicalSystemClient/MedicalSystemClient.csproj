@@ -69,6 +69,9 @@
     <EmbeddedResource Include="Forms\Authorize_win.resx">
       <DependentUpon>Authorize_win.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\doctor.resx">
+      <DependentUpon>doctor.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\registratura.resx">
       <DependentUpon>registratura.cs</DependentUpon>
     </EmbeddedResource>

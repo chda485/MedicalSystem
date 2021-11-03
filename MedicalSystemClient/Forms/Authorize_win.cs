@@ -143,7 +143,7 @@ namespace MedicalSystemClient
 	                MessageBox.Show("Введены неверные данные");
 	                return false;
 	            }
-	            else if (mes[2] == "попытка несанкционированного доступа")
+	            else if (mes[2] == "Attempt to burglar")
 	            {
 	                MessageBox.Show("Ошибка связи с сервером");
 	                return false;
@@ -161,7 +161,7 @@ namespace MedicalSystemClient
 							continue;
 						else
 						{
-							MessageBox.Show("Ошибка. В БД находятся неверные данные по Вашему запрос. Свяжитсь с администратором");
+							MessageBox.Show("Ошибка. В БД находятся неверные данные по Вашему запросу. Свяжитсь с администратором");
 							return false;
 						}
         			}
@@ -172,6 +172,16 @@ namespace MedicalSystemClient
 
         private void CloseBt_Click(object sender, EventArgs e)
         {
+            //создаем сообщение серверу об отсоединении
+            string mes = String.Format("@disconnect;{0};{1};{2};disconnect//@",
+                                                this.name, this.passw, DateTime.Now.ToShortTimeString());
+            //отправляем сообщение
+            data = new byte[256];
+            data = Encoding.Unicode.GetBytes(mes);
+            this.socket.Send(data);
+            //закрываем сокет, текущее окно и спрятанное родительское (авторизации)
+            this.socket.Shutdown(SocketShutdown.Both);
+            socket.Close();
             this.Close();
         }
     }

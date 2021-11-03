@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.label1 = new System.Windows.Forms.Label();
             this.timeLb = new System.Windows.Forms.Label();
             this.textBox1 = new System.Windows.Forms.TextBox();
@@ -37,7 +38,6 @@
             this.nextBt = new System.Windows.Forms.Button();
             this.clearBt = new System.Windows.Forms.Button();
             this.exitBt = new System.Windows.Forms.Button();
-            this.writeBt = new System.Windows.Forms.Button();
             this.visitsBt = new System.Windows.Forms.Button();
             this.schedularBt = new System.Windows.Forms.Button();
             this.changeBt = new System.Windows.Forms.Button();
@@ -52,17 +52,22 @@
             this.label12 = new System.Windows.Forms.Label();
             this.family = new System.Windows.Forms.TextBox();
             this.phone = new System.Windows.Forms.TextBox();
-            this.age = new System.Windows.Forms.TextBox();
+            this.borning_date = new System.Windows.Forms.TextBox();
             this.snils = new System.Windows.Forms.TextBox();
             this.address = new System.Windows.Forms.TextBox();
-            this.passportSer = new System.Windows.Forms.TextBox();
-            this.passportNum = new System.Windows.Forms.TextBox();
+            this.Ser_passport = new System.Windows.Forms.TextBox();
+            this.Num_passport = new System.Windows.Forms.TextBox();
             this.otchestvo = new System.Windows.Forms.TextBox();
             this.name = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
-            this.areaNum = new System.Windows.Forms.TextBox();
-            this.job = new System.Windows.Forms.TextBox();
+            this.Area = new System.Windows.Forms.TextBox();
+            this.Work = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
+            this.Num_polis = new System.Windows.Forms.TextBox();
+            this.label13 = new System.Windows.Forms.Label();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.writeBt = new System.Windows.Forms.Button();
+            this.seeWritesBt = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label1
@@ -92,16 +97,18 @@
             this.textBox1.Location = new System.Drawing.Point(12, 116);
             this.textBox1.Multiline = true;
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(655, 2);
+            this.textBox1.Size = new System.Drawing.Size(765, 2);
             this.textBox1.TabIndex = 4;
             // 
             // User_view
             // 
             this.User_view.BackColor = System.Drawing.SystemColors.Control;
-            this.User_view.Location = new System.Drawing.Point(676, 64);
+            this.User_view.Enabled = false;
+            this.User_view.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.User_view.Location = new System.Drawing.Point(541, 48);
             this.User_view.Multiline = true;
             this.User_view.Name = "User_view";
-            this.User_view.Size = new System.Drawing.Size(112, 51);
+            this.User_view.Size = new System.Drawing.Size(247, 51);
             this.User_view.TabIndex = 5;
             // 
             // findBt
@@ -110,7 +117,7 @@
             this.findBt.Name = "findBt";
             this.findBt.Size = new System.Drawing.Size(35, 35);
             this.findBt.TabIndex = 6;
-            this.findBt.Text = "button1";
+            this.findBt.Text = "F";
             this.findBt.UseVisualStyleBackColor = true;
             this.findBt.Click += new System.EventHandler(this.findBt_click);
             // 
@@ -120,8 +127,9 @@
             this.prevBt.Name = "prevBt";
             this.prevBt.Size = new System.Drawing.Size(35, 35);
             this.prevBt.TabIndex = 7;
-            this.prevBt.Text = "button2";
+            this.prevBt.Text = "P";
             this.prevBt.UseVisualStyleBackColor = true;
+            this.prevBt.Click += new System.EventHandler(this.prevBt_click);
             // 
             // nextBt
             // 
@@ -129,8 +137,9 @@
             this.nextBt.Name = "nextBt";
             this.nextBt.Size = new System.Drawing.Size(37, 35);
             this.nextBt.TabIndex = 8;
-            this.nextBt.Text = "button3";
+            this.nextBt.Text = "N";
             this.nextBt.UseVisualStyleBackColor = true;
+            this.nextBt.Click += new System.EventHandler(this.nextBt_click);
             // 
             // clearBt
             // 
@@ -138,14 +147,14 @@
             this.clearBt.Name = "clearBt";
             this.clearBt.Size = new System.Drawing.Size(34, 35);
             this.clearBt.TabIndex = 9;
-            this.clearBt.Text = "button4";
+            this.clearBt.Text = "C";
             this.clearBt.UseVisualStyleBackColor = true;
             this.clearBt.Click += new System.EventHandler(this.clearBt_click);
             // 
             // exitBt
             // 
             this.exitBt.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.exitBt.Location = new System.Drawing.Point(702, 496);
+            this.exitBt.Location = new System.Drawing.Point(702, 528);
             this.exitBt.Name = "exitBt";
             this.exitBt.Size = new System.Drawing.Size(75, 33);
             this.exitBt.TabIndex = 10;
@@ -153,20 +162,10 @@
             this.exitBt.UseVisualStyleBackColor = true;
             this.exitBt.Click += new System.EventHandler(this.ExitBt_Click);
             // 
-            // writeBt
-            // 
-            this.writeBt.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.writeBt.Location = new System.Drawing.Point(527, 151);
-            this.writeBt.Name = "writeBt";
-            this.writeBt.Size = new System.Drawing.Size(123, 54);
-            this.writeBt.TabIndex = 11;
-            this.writeBt.Text = "Записать на прием";
-            this.writeBt.UseVisualStyleBackColor = true;
-            // 
             // visitsBt
             // 
             this.visitsBt.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.visitsBt.Location = new System.Drawing.Point(527, 232);
+            this.visitsBt.Location = new System.Drawing.Point(527, 330);
             this.visitsBt.Name = "visitsBt";
             this.visitsBt.Size = new System.Drawing.Size(125, 58);
             this.visitsBt.TabIndex = 12;
@@ -176,7 +175,7 @@
             // schedularBt
             // 
             this.schedularBt.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.schedularBt.Location = new System.Drawing.Point(527, 324);
+            this.schedularBt.Location = new System.Drawing.Point(527, 422);
             this.schedularBt.Name = "schedularBt";
             this.schedularBt.Size = new System.Drawing.Size(123, 53);
             this.schedularBt.TabIndex = 13;
@@ -186,7 +185,7 @@
             // changeBt
             // 
             this.changeBt.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.changeBt.Location = new System.Drawing.Point(527, 400);
+            this.changeBt.Location = new System.Drawing.Point(527, 498);
             this.changeBt.Name = "changeBt";
             this.changeBt.Size = new System.Drawing.Size(123, 56);
             this.changeBt.TabIndex = 14;
@@ -207,7 +206,7 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label4.Location = new System.Drawing.Point(28, 437);
+            this.label4.Location = new System.Drawing.Point(28, 470);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(78, 21);
             this.label4.TabIndex = 16;
@@ -257,11 +256,11 @@
             // 
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label10.Location = new System.Drawing.Point(28, 402);
+            this.label10.Location = new System.Drawing.Point(28, 435);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(75, 21);
+            this.label10.Size = new System.Drawing.Size(132, 21);
             this.label10.TabIndex = 22;
-            this.label10.Text = "Возраст";
+            this.label10.Text = "Дата рождения";
             // 
             // label11
             // 
@@ -294,18 +293,18 @@
             // phone
             // 
             this.phone.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.phone.Location = new System.Drawing.Point(167, 434);
+            this.phone.Location = new System.Drawing.Point(167, 467);
             this.phone.Name = "phone";
             this.phone.Size = new System.Drawing.Size(166, 29);
             this.phone.TabIndex = 9;
             // 
-            // age
+            // borning_date
             // 
-            this.age.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.age.Location = new System.Drawing.Point(167, 399);
-            this.age.Name = "age";
-            this.age.Size = new System.Drawing.Size(166, 29);
-            this.age.TabIndex = 8;
+            this.borning_date.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.borning_date.Location = new System.Drawing.Point(167, 432);
+            this.borning_date.Name = "borning_date";
+            this.borning_date.Size = new System.Drawing.Size(166, 29);
+            this.borning_date.TabIndex = 8;
             // 
             // snils
             // 
@@ -323,21 +322,21 @@
             this.address.Size = new System.Drawing.Size(166, 29);
             this.address.TabIndex = 6;
             // 
-            // passportSer
+            // Ser_passport
             // 
-            this.passportSer.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.passportSer.Location = new System.Drawing.Point(167, 294);
-            this.passportSer.Name = "passportSer";
-            this.passportSer.Size = new System.Drawing.Size(166, 29);
-            this.passportSer.TabIndex = 5;
+            this.Ser_passport.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.Ser_passport.Location = new System.Drawing.Point(167, 294);
+            this.Ser_passport.Name = "Ser_passport";
+            this.Ser_passport.Size = new System.Drawing.Size(166, 29);
+            this.Ser_passport.TabIndex = 5;
             // 
-            // passportNum
+            // Num_passport
             // 
-            this.passportNum.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.passportNum.Location = new System.Drawing.Point(167, 254);
-            this.passportNum.Name = "passportNum";
-            this.passportNum.Size = new System.Drawing.Size(166, 29);
-            this.passportNum.TabIndex = 4;
+            this.Num_passport.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.Num_passport.Location = new System.Drawing.Point(167, 254);
+            this.Num_passport.Name = "Num_passport";
+            this.Num_passport.Size = new System.Drawing.Size(166, 29);
+            this.Num_passport.TabIndex = 4;
             // 
             // otchestvo
             // 
@@ -359,54 +358,100 @@
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label5.Location = new System.Drawing.Point(28, 472);
+            this.label5.Location = new System.Drawing.Point(28, 505);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(87, 21);
             this.label5.TabIndex = 17;
             this.label5.Text = "№ округа";
             // 
-            // areaNum
+            // Area
             // 
-            this.areaNum.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.areaNum.Location = new System.Drawing.Point(167, 469);
-            this.areaNum.Name = "areaNum";
-            this.areaNum.Size = new System.Drawing.Size(166, 29);
-            this.areaNum.TabIndex = 10;
+            this.Area.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.Area.Location = new System.Drawing.Point(167, 502);
+            this.Area.Name = "Area";
+            this.Area.Size = new System.Drawing.Size(166, 29);
+            this.Area.TabIndex = 10;
             // 
-            // job
+            // Work
             // 
-            this.job.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.job.Location = new System.Drawing.Point(167, 504);
-            this.job.Name = "job";
-            this.job.Size = new System.Drawing.Size(166, 29);
-            this.job.TabIndex = 11;
+            this.Work.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.Work.Location = new System.Drawing.Point(167, 537);
+            this.Work.Name = "Work";
+            this.Work.Size = new System.Drawing.Size(166, 29);
+            this.Work.TabIndex = 11;
             // 
             // label3
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label3.Location = new System.Drawing.Point(28, 507);
+            this.label3.Location = new System.Drawing.Point(28, 540);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(91, 21);
             this.label3.TabIndex = 35;
             this.label3.Text = "Занятость";
             // 
+            // Num_polis
+            // 
+            this.Num_polis.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.Num_polis.Location = new System.Drawing.Point(167, 400);
+            this.Num_polis.Name = "Num_polis";
+            this.Num_polis.Size = new System.Drawing.Size(166, 29);
+            this.Num_polis.TabIndex = 36;
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label13.Location = new System.Drawing.Point(28, 403);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(61, 21);
+            this.label13.TabIndex = 37;
+            this.label13.Text = "Полис";
+            // 
+            // timer1
+            // 
+            this.timer1.Enabled = true;
+            this.timer1.Tick += new System.EventHandler(this.Timer1_Tick);
+            // 
+            // writeBt
+            // 
+            this.writeBt.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.writeBt.Location = new System.Drawing.Point(527, 151);
+            this.writeBt.Name = "writeBt";
+            this.writeBt.Size = new System.Drawing.Size(123, 54);
+            this.writeBt.TabIndex = 11;
+            this.writeBt.Text = "Записать на прием";
+            this.writeBt.UseVisualStyleBackColor = true;
+            // 
+            // seeWritesBt
+            // 
+            this.seeWritesBt.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.seeWritesBt.Location = new System.Drawing.Point(527, 240);
+            this.seeWritesBt.Name = "seeWritesBt";
+            this.seeWritesBt.Size = new System.Drawing.Size(123, 54);
+            this.seeWritesBt.TabIndex = 38;
+            this.seeWritesBt.Text = "Посмотреть записи";
+            this.seeWritesBt.UseVisualStyleBackColor = true;
+            // 
             // registratura
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 553);
-            this.Controls.Add(this.job);
+            this.ClientSize = new System.Drawing.Size(800, 578);
+            this.Controls.Add(this.seeWritesBt);
+            this.Controls.Add(this.Num_polis);
+            this.Controls.Add(this.label13);
+            this.Controls.Add(this.Work);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.name);
             this.Controls.Add(this.otchestvo);
-            this.Controls.Add(this.passportNum);
-            this.Controls.Add(this.passportSer);
+            this.Controls.Add(this.Num_passport);
+            this.Controls.Add(this.Ser_passport);
             this.Controls.Add(this.address);
             this.Controls.Add(this.snils);
-            this.Controls.Add(this.age);
+            this.Controls.Add(this.borning_date);
             this.Controls.Add(this.phone);
-            this.Controls.Add(this.areaNum);
+            this.Controls.Add(this.Area);
             this.Controls.Add(this.family);
             this.Controls.Add(this.label12);
             this.Controls.Add(this.label11);
@@ -449,7 +494,6 @@
         private System.Windows.Forms.Button nextBt;
         private System.Windows.Forms.Button clearBt;
         private System.Windows.Forms.Button exitBt;
-        private System.Windows.Forms.Button writeBt;
         private System.Windows.Forms.Button visitsBt;
         private System.Windows.Forms.Button schedularBt;
         private System.Windows.Forms.Button changeBt;
@@ -464,16 +508,21 @@
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.TextBox family;
         private System.Windows.Forms.TextBox phone;
-        private System.Windows.Forms.TextBox age;
+        private System.Windows.Forms.TextBox borning_date;
         private System.Windows.Forms.TextBox snils;
         private System.Windows.Forms.TextBox address;
-        private System.Windows.Forms.TextBox passportSer;
-        private System.Windows.Forms.TextBox passportNum;
+        private System.Windows.Forms.TextBox Ser_passport;
+        private System.Windows.Forms.TextBox Num_passport;
         private System.Windows.Forms.TextBox otchestvo;
         private System.Windows.Forms.TextBox name;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.TextBox areaNum;
-        private System.Windows.Forms.TextBox job;
+        private System.Windows.Forms.TextBox Area;
+        private System.Windows.Forms.TextBox Work;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.TextBox Num_polis;
+        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.Timer timer1;
+        private System.Windows.Forms.Button writeBt;
+        private System.Windows.Forms.Button seeWritesBt;
     }
 }

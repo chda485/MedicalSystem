@@ -19,3 +19,4 @@ E:\projects\C#\projects\МедСистема\MedicalSystemClient\obj\Debug\Medic
 E:\projects\C#\projects\МедСистема\MedicalSystemClient\obj\Debug\MedicalSystemClient.csproj.CoreCompileInputs.cache
 E:\projects\C#\projects\МедСистема\MedicalSystemClient\obj\Debug\MedicalSystemClient.exe
 E:\projects\C#\projects\МедСистема\MedicalSystemClient\obj\Debug\MedicalSystemClient.pdb
+E:\projects\C#\projects\МедСистема\MedicalSystemClient\obj\Debug\MedicalSystemClient.doctor.resources
