@@ -120,6 +120,7 @@
             this.Controls.Add(this.enterBt);
             this.Name = "Authorize_win";
             this.Text = "Authorization";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Authorize_win_FormClosed);
             this.ResumeLayout(false);
             this.PerformLayout();
 

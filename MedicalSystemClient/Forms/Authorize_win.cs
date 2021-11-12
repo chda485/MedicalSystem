@@ -88,20 +88,19 @@ namespace MedicalSystemClient
                     while (socket.Available > 0);
                     //проверяем, корректное ли пришло ФИО
                     bool goodFIO = CheckAnswer(builder.ToString(), 1);
-
                     if (goodFIO == true)
                     {
                     	//если это врач
                     	if (dopusk == 1)
                     	{
-                    		doctor doctor_win = new doctor(fio, this, socket, this.name, this.passw);
+                    		doctor doctor_win = new doctor(fio, socket, this.name, this.passw);
                     		doctor_win.Show();
                     		this.Hide();
                     	}
                     	//если это работник регистратуры
                     	else if (dopusk == 2)
                     	{
-                    		registratura registr_win = new registratura(fio, this, socket, this.name, this.passw);
+                    		registratura registr_win = new registratura(fio, socket, this.name, this.passw);
                             this.Hide();
                     		registr_win.Show();
                     	}
@@ -110,7 +109,7 @@ namespace MedicalSystemClient
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);
+                MessageBox.Show(ex.Message + '1');
             }
         }
 
@@ -171,6 +170,11 @@ namespace MedicalSystemClient
         }
 
         private void CloseBt_Click(object sender, EventArgs e)
+        {         
+            this.Close();
+        }
+
+        private void Authorize_win_FormClosed(object sender, FormClosedEventArgs e)
         {
             //создаем сообщение серверу об отсоединении
             string mes = String.Format("@disconnect;{0};{1};{2};disconnect//@",
@@ -182,7 +186,6 @@ namespace MedicalSystemClient
             //закрываем сокет, текущее окно и спрятанное родительское (авторизации)
             this.socket.Shutdown(SocketShutdown.Both);
             socket.Close();
-            this.Close();
         }
     }
 }

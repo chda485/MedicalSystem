@@ -28,16 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
-            this.label1 = new System.Windows.Forms.Label();
-            this.timeLb = new System.Windows.Forms.Label();
             this.textBox1 = new System.Windows.Forms.TextBox();
-            this.User_view = new System.Windows.Forms.TextBox();
             this.findBt = new System.Windows.Forms.Button();
             this.prevBt = new System.Windows.Forms.Button();
             this.nextBt = new System.Windows.Forms.Button();
             this.clearBt = new System.Windows.Forms.Button();
-            this.exitBt = new System.Windows.Forms.Button();
             this.visitsBt = new System.Windows.Forms.Button();
             this.schedularBt = new System.Windows.Forms.Button();
             this.changeBt = new System.Windows.Forms.Button();
@@ -65,31 +60,9 @@
             this.label3 = new System.Windows.Forms.Label();
             this.Num_polis = new System.Windows.Forms.TextBox();
             this.label13 = new System.Windows.Forms.Label();
-            this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.writeBt = new System.Windows.Forms.Button();
             this.seeWritesBt = new System.Windows.Forms.Button();
             this.SuspendLayout();
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Times New Roman", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label1.Location = new System.Drawing.Point(283, 27);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(166, 31);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Регистратура";
-            // 
-            // timeLb
-            // 
-            this.timeLb.AutoSize = true;
-            this.timeLb.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.timeLb.Font = new System.Drawing.Font("Times New Roman", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.timeLb.Location = new System.Drawing.Point(687, 15);
-            this.timeLb.Name = "timeLb";
-            this.timeLb.Size = new System.Drawing.Size(90, 25);
-            this.timeLb.TabIndex = 2;
-            this.timeLb.Text = "##:##:##";
             // 
             // textBox1
             // 
@@ -99,17 +72,6 @@
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(765, 2);
             this.textBox1.TabIndex = 4;
-            // 
-            // User_view
-            // 
-            this.User_view.BackColor = System.Drawing.SystemColors.Control;
-            this.User_view.Enabled = false;
-            this.User_view.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.User_view.Location = new System.Drawing.Point(541, 48);
-            this.User_view.Multiline = true;
-            this.User_view.Name = "User_view";
-            this.User_view.Size = new System.Drawing.Size(247, 51);
-            this.User_view.TabIndex = 5;
             // 
             // findBt
             // 
@@ -151,21 +113,10 @@
             this.clearBt.UseVisualStyleBackColor = true;
             this.clearBt.Click += new System.EventHandler(this.clearBt_click);
             // 
-            // exitBt
-            // 
-            this.exitBt.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.exitBt.Location = new System.Drawing.Point(702, 528);
-            this.exitBt.Name = "exitBt";
-            this.exitBt.Size = new System.Drawing.Size(75, 33);
-            this.exitBt.TabIndex = 10;
-            this.exitBt.Text = "Выход";
-            this.exitBt.UseVisualStyleBackColor = true;
-            this.exitBt.Click += new System.EventHandler(this.ExitBt_Click);
-            // 
             // visitsBt
             // 
             this.visitsBt.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.visitsBt.Location = new System.Drawing.Point(527, 330);
+            this.visitsBt.Location = new System.Drawing.Point(527, 313);
             this.visitsBt.Name = "visitsBt";
             this.visitsBt.Size = new System.Drawing.Size(125, 58);
             this.visitsBt.TabIndex = 12;
@@ -175,7 +126,7 @@
             // schedularBt
             // 
             this.schedularBt.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.schedularBt.Location = new System.Drawing.Point(527, 422);
+            this.schedularBt.Location = new System.Drawing.Point(527, 400);
             this.schedularBt.Name = "schedularBt";
             this.schedularBt.Size = new System.Drawing.Size(123, 53);
             this.schedularBt.TabIndex = 13;
@@ -185,7 +136,7 @@
             // changeBt
             // 
             this.changeBt.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.changeBt.Location = new System.Drawing.Point(527, 498);
+            this.changeBt.Location = new System.Drawing.Point(527, 475);
             this.changeBt.Name = "changeBt";
             this.changeBt.Size = new System.Drawing.Size(123, 56);
             this.changeBt.TabIndex = 14;
@@ -408,11 +359,6 @@
             this.label13.TabIndex = 37;
             this.label13.Text = "Полис";
             // 
-            // timer1
-            // 
-            this.timer1.Enabled = true;
-            this.timer1.Tick += new System.EventHandler(this.Timer1_Tick);
-            // 
             // writeBt
             // 
             this.writeBt.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
@@ -426,7 +372,7 @@
             // seeWritesBt
             // 
             this.seeWritesBt.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.seeWritesBt.Location = new System.Drawing.Point(527, 240);
+            this.seeWritesBt.Location = new System.Drawing.Point(527, 229);
             this.seeWritesBt.Name = "seeWritesBt";
             this.seeWritesBt.Size = new System.Drawing.Size(123, 54);
             this.seeWritesBt.TabIndex = 38;
@@ -467,33 +413,60 @@
             this.Controls.Add(this.schedularBt);
             this.Controls.Add(this.visitsBt);
             this.Controls.Add(this.writeBt);
-            this.Controls.Add(this.exitBt);
             this.Controls.Add(this.clearBt);
             this.Controls.Add(this.nextBt);
             this.Controls.Add(this.prevBt);
             this.Controls.Add(this.findBt);
-            this.Controls.Add(this.User_view);
             this.Controls.Add(this.textBox1);
-            this.Controls.Add(this.timeLb);
-            this.Controls.Add(this.label1);
             this.Name = "registratura";
             this.Text = "Окно регистратуры";
+            this.Controls.SetChildIndex(this.label1, 0);
+            this.Controls.SetChildIndex(this.User_view, 0);
+            this.Controls.SetChildIndex(this.textBox1, 0);
+            this.Controls.SetChildIndex(this.findBt, 0);
+            this.Controls.SetChildIndex(this.prevBt, 0);
+            this.Controls.SetChildIndex(this.nextBt, 0);
+            this.Controls.SetChildIndex(this.clearBt, 0);
+            this.Controls.SetChildIndex(this.writeBt, 0);
+            this.Controls.SetChildIndex(this.visitsBt, 0);
+            this.Controls.SetChildIndex(this.schedularBt, 0);
+            this.Controls.SetChildIndex(this.changeBt, 0);
+            this.Controls.SetChildIndex(this.label2, 0);
+            this.Controls.SetChildIndex(this.label4, 0);
+            this.Controls.SetChildIndex(this.label5, 0);
+            this.Controls.SetChildIndex(this.label6, 0);
+            this.Controls.SetChildIndex(this.label7, 0);
+            this.Controls.SetChildIndex(this.label8, 0);
+            this.Controls.SetChildIndex(this.label9, 0);
+            this.Controls.SetChildIndex(this.label10, 0);
+            this.Controls.SetChildIndex(this.label11, 0);
+            this.Controls.SetChildIndex(this.label12, 0);
+            this.Controls.SetChildIndex(this.family, 0);
+            this.Controls.SetChildIndex(this.Area, 0);
+            this.Controls.SetChildIndex(this.phone, 0);
+            this.Controls.SetChildIndex(this.borning_date, 0);
+            this.Controls.SetChildIndex(this.snils, 0);
+            this.Controls.SetChildIndex(this.address, 0);
+            this.Controls.SetChildIndex(this.Ser_passport, 0);
+            this.Controls.SetChildIndex(this.Num_passport, 0);
+            this.Controls.SetChildIndex(this.otchestvo, 0);
+            this.Controls.SetChildIndex(this.name, 0);
+            this.Controls.SetChildIndex(this.label3, 0);
+            this.Controls.SetChildIndex(this.Work, 0);
+            this.Controls.SetChildIndex(this.label13, 0);
+            this.Controls.SetChildIndex(this.Num_polis, 0);
+            this.Controls.SetChildIndex(this.seeWritesBt, 0);
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
 
         #endregion
-
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label timeLb;
         private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.TextBox User_view;
         private System.Windows.Forms.Button findBt;
         private System.Windows.Forms.Button prevBt;
         private System.Windows.Forms.Button nextBt;
         private System.Windows.Forms.Button clearBt;
-        private System.Windows.Forms.Button exitBt;
         private System.Windows.Forms.Button visitsBt;
         private System.Windows.Forms.Button schedularBt;
         private System.Windows.Forms.Button changeBt;
@@ -521,7 +494,6 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox Num_polis;
         private System.Windows.Forms.Label label13;
-        private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.Button writeBt;
         private System.Windows.Forms.Button seeWritesBt;
     }

@@ -12,10 +12,9 @@ using System.Net.Sockets;
 
 namespace MedicalSystemClient
 {
-    public partial class registratura : Form
+    public partial class registratura : BaseWin
     {
-        private Form parent;
-        private Socket socket; //сокет, используемый для связи с сервером
+		private Socket socket;
         private string client_name; //локальное имя данной клиентской машины
         private string passw; //локальный пароль данной клиентской машины
         private byte[] data; //буфер данных для чтения и отправки
@@ -27,15 +26,18 @@ namespace MedicalSystemClient
 		private int current_patient = 0; // индекс текущего отображаемого пациента
 		private string[] patients; // массив данных по пациентам
 
-        public registratura(List<string> fio, Form parent, Socket socket, string name, string passw)
+        public registratura(List<string> fio, Socket socket, string name, string passw)
         {
             InitializeComponent();
-            this.reg_fio = fio;
-            this.parent = parent;
+            this.label1.Text = "Регистратура";
+            //устанавливаем размещение компонентов с родительской формы
+            SetElements(new int[] { 713, 687, 541, 265 }, new int[] { 537, 15, 48, 30});
+            this.nextBt.Enabled = false;
             this.socket = socket;
             this.client_name = name;
             this.passw = passw;
-			this.fields = new List<TextBox>() {  //КОРРЕКТИРОВАТЬ ПО ПОРЯДКУ НА ФОРМЕ
+            this.reg_fio = fio;
+            this.fields = new List<TextBox>() {  //КОРРЕКТИРОВАТЬ ПО ПОРЯДКУ НА ФОРМЕ
                 this.family, this.phone, this.borning_date,
 				this.snils, this.address, this.Ser_passport,
 				this.Num_passport, this.otchestvo, 
@@ -43,8 +45,7 @@ namespace MedicalSystemClient
                 this.Num_polis
             };
             this.User_view.Text = "Пользователь:\t" + '\t' + reg_fio[0] + ' ' + reg_fio[1] + ' ' + reg_fio[2];
-			this.nextBt.Enabled = false;
-			this.prevBt.Enabled = false;
+            this.prevBt.Enabled = false;
             this.timer1.Start();
         }
 		
@@ -128,22 +129,6 @@ namespace MedicalSystemClient
                 item.Clear();
 			this.nextBt.Enabled = false;
 			this.prevBt.Enabled = false;
-        }
-
-        private void ExitBt_Click(object sender, EventArgs e)
-        {
-            //создаем сообщение серверу об отсоединении
-            string mes = String.Format("@disconnect;{0};{1};{2};disconnect//@",
-                                                this.client_name, this.passw, DateTime.Now.ToShortTimeString());
-            //отправляем сообщение
-            data = new byte[256];
-            data = Encoding.Unicode.GetBytes(mes);
-            this.socket.Send(data);
-            //закрываем сокет, текущее окно и спрятанное родительское (авторизации)
-            this.socket.Shutdown(SocketShutdown.Both);
-            socket.Close();
-            this.parent.Close();
-            this.Close();
         }
 
         private string MakeQueary()
@@ -244,11 +229,5 @@ namespace MedicalSystemClient
             this.Work.Text = data[11];
             this.phone.Text = data[12];   
 		}
-
-        private void Timer1_Tick(object sender, EventArgs e)
-        {
-            string time = DateTime.Now.ToLongTimeString();
-            this.timeLb.Text = time;
-        }
     }
 }

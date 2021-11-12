@@ -11,7 +11,6 @@ G:\projects\C#\projects\МедСистема\MedicalSystemClient\obj\Debug\Medic
 E:\projects\C#\projects\МедСистема\MedicalSystemClient\bin\Debug\MedicalSystemClient.exe.config
 E:\projects\C#\projects\МедСистема\MedicalSystemClient\bin\Debug\MedicalSystemClient.exe
 E:\projects\C#\projects\МедСистема\MedicalSystemClient\bin\Debug\MedicalSystemClient.pdb
-E:\projects\C#\projects\МедСистема\MedicalSystemClient\obj\Debug\MedicalSystemClient.csprojAssemblyReference.cache
 E:\projects\C#\projects\МедСистема\MedicalSystemClient\obj\Debug\MedicalSystemClient.Authorize_win.resources
 E:\projects\C#\projects\МедСистема\MedicalSystemClient\obj\Debug\MedicalSystemClient.registratura.resources
 E:\projects\C#\projects\МедСистема\MedicalSystemClient\obj\Debug\MedicalSystemClient.Properties.Resources.resources
@@ -20,3 +19,5 @@ E:\projects\C#\projects\МедСистема\MedicalSystemClient\obj\Debug\Medic
 E:\projects\C#\projects\МедСистема\MedicalSystemClient\obj\Debug\MedicalSystemClient.exe
 E:\projects\C#\projects\МедСистема\MedicalSystemClient\obj\Debug\MedicalSystemClient.pdb
 E:\projects\C#\projects\МедСистема\MedicalSystemClient\obj\Debug\MedicalSystemClient.doctor.resources
+E:\projects\C#\projects\МедСистема\MedicalSystemClient\obj\Debug\MedicalSystemClient.Doctor_schedular.resources
+E:\projects\C#\projects\МедСистема\MedicalSystemClient\obj\Debug\MedicalSystemClient.BaseWin.resources
