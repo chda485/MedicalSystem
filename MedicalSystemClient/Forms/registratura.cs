@@ -14,14 +14,7 @@ namespace MedicalSystemClient
 {
     public partial class registratura : BaseWin
     {
-		private Socket socket;
-        private string client_name; //локальное имя данной клиентской машины
-        private string passw; //локальный пароль данной клиентской машины
-        private byte[] data; //буфер данных для чтения и отправки
-        private List<string> reg_fio = new List<string>(); //список ФИО пользователя
-        private List<string> results = new List<string>(); //список результатов запроса к БД
 		private List<TextBox> fields; //список текстовых полей используемых для поиска
-		private StringBuilder builder = new StringBuilder(); //конструктор строк сообщений
 		private int num_patients; //число отображаемых пациентов
 		private int current_patient = 0; // индекс текущего отображаемого пациента
 		private string[] patients; // массив данных по пациентам
@@ -36,7 +29,7 @@ namespace MedicalSystemClient
             this.socket = socket;
             this.client_name = name;
             this.passw = passw;
-            this.reg_fio = fio;
+            this.user_fio = fio;
             this.fields = new List<TextBox>() {  //КОРРЕКТИРОВАТЬ ПО ПОРЯДКУ НА ФОРМЕ
                 this.family, this.phone, this.borning_date,
 				this.snils, this.address, this.Ser_passport,
@@ -44,7 +37,7 @@ namespace MedicalSystemClient
 				this.name, this.Area, this.Work,
                 this.Num_polis
             };
-            this.User_view.Text = "Пользователь:\t" + '\t' + reg_fio[0] + ' ' + reg_fio[1] + ' ' + reg_fio[2];
+            this.User_view.Text = "Пользователь:\t" + '\t' + user_fio[0] + ' ' + user_fio[1] + ' ' + user_fio[2];
             this.prevBt.Enabled = false;
             this.timer1.Start();
         }
@@ -102,21 +95,10 @@ namespace MedicalSystemClient
 			string mes = String.Format("@select;{0};{1};{2};{3}//@",
 										this.client_name, this.passw, DateTime.Now.ToShortTimeString(),
 										queary);
-			data = new byte[256];
-			data = Encoding.Unicode.GetBytes(mes);
-			this.socket.Send(data);
-			
-			data = new byte[256];
-			int bytes = 0;
-			//пока есть данные, читаем их
-			do
-			{
-				bytes = socket.Receive(data, data.Length, 0);
-				this.builder.Append(Encoding.Unicode.GetString(data, 0, bytes));
-			}
-			while (socket.Available > 0);
-			//проверяем присланный ответ
-			bool check = CheckAnswer(builder.ToString());
+
+            string answer = DoTransfer(mes);
+
+			bool check = CheckAnswer(answer);
 			if (check == true)
 			{
 				InsertData();				
@@ -229,5 +211,25 @@ namespace MedicalSystemClient
             this.Work.Text = data[11];
             this.phone.Text = data[12];   
 		}
+
+        private void SchedularBt_Click(object sender, EventArgs e)
+        {
+            Doctor_schedular doctor_Schedular = new Doctor_schedular(this.user_fio, socket, this.client_name, this.passw);
+            this.Close();
+            doctor_Schedular.Show();
+        }
+
+        private void SeeWritesBt_Click(object sender, EventArgs e)
+        {
+            WritesSchedular writes = new WritesSchedular();
+            this.Close();
+            writes.Show();
+        }
+
+        private void WriteBt_Click(object sender, EventArgs e)
+        {
+            Writes wr = new Writes();
+            wr.Show();
+        }
     }
 }

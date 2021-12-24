@@ -34,6 +34,10 @@
             this.button1 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
+            // exitBt
+            // 
+            this.exitBt.Location = new System.Drawing.Point(739, 379);
+            // 
             // textBox1
             // 
             this.textBox1.BackColor = System.Drawing.SystemColors.MenuText;
@@ -77,13 +81,14 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(615, 364);
+            this.ClientSize = new System.Drawing.Size(641, 338);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.schedularBt);
             this.Controls.Add(this.visitsBt);
             this.Controls.Add(this.textBox1);
             this.Name = "doctor";
             this.Text = "doctor";
+            this.Controls.SetChildIndex(this.exitBt, 0);
             this.Controls.SetChildIndex(this.textBox1, 0);
             this.Controls.SetChildIndex(this.visitsBt, 0);
             this.Controls.SetChildIndex(this.schedularBt, 0);

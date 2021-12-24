@@ -176,16 +176,19 @@ namespace MedicalSystemClient
 
         private void Authorize_win_FormClosed(object sender, FormClosedEventArgs e)
         {
-            //создаем сообщение серверу об отсоединении
-            string mes = String.Format("@disconnect;{0};{1};{2};disconnect//@",
-                                                this.name, this.passw, DateTime.Now.ToShortTimeString());
-            //отправляем сообщение
-            data = new byte[256];
-            data = Encoding.Unicode.GetBytes(mes);
-            this.socket.Send(data);
-            //закрываем сокет, текущее окно и спрятанное родительское (авторизации)
-            this.socket.Shutdown(SocketShutdown.Both);
-            socket.Close();
+            if (this.socket != null)
+            {
+                //создаем сообщение серверу об отсоединении
+                string mes = String.Format("@disconnect;{0};{1};{2};disconnect//@",
+                                                    this.name, this.passw, DateTime.Now.ToShortTimeString());
+                //отправляем сообщение
+                data = new byte[256];
+                data = Encoding.Unicode.GetBytes(mes);
+                this.socket.Send(data);
+                //закрываем сокет, текущее окно и спрятанное родительское (авторизации)
+                this.socket.Shutdown(SocketShutdown.Both);
+                socket.Close();
+            }
         }
     }
 }

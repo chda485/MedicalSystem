@@ -40,7 +40,7 @@
             // 
             this.exitBt.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.exitBt.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.exitBt.Location = new System.Drawing.Point(713, 405);
+            this.exitBt.Location = new System.Drawing.Point(710, 499);
             this.exitBt.Name = "exitBt";
             this.exitBt.Size = new System.Drawing.Size(75, 33);
             this.exitBt.TabIndex = 19;
@@ -50,10 +50,11 @@
             // 
             // User_view
             // 
+            this.User_view.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.User_view.BackColor = System.Drawing.SystemColors.Control;
             this.User_view.Enabled = false;
             this.User_view.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.User_view.Location = new System.Drawing.Point(541, 47);
+            this.User_view.Location = new System.Drawing.Point(539, 47);
             this.User_view.Multiline = true;
             this.User_view.Name = "User_view";
             this.User_view.Size = new System.Drawing.Size(247, 51);
@@ -61,10 +62,11 @@
             // 
             // timeLb
             // 
+            this.timeLb.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.timeLb.AutoSize = true;
             this.timeLb.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.timeLb.Font = new System.Drawing.Font("Times New Roman", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.timeLb.Location = new System.Drawing.Point(698, 9);
+            this.timeLb.Location = new System.Drawing.Point(695, 9);
             this.timeLb.Name = "timeLb";
             this.timeLb.Size = new System.Drawing.Size(90, 25);
             this.timeLb.TabIndex = 17;
@@ -72,6 +74,7 @@
             // 
             // label1
             // 
+            this.label1.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Times New Roman", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.label1.Location = new System.Drawing.Point(256, 31);
@@ -88,7 +91,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(797, 544);
             this.Controls.Add(this.exitBt);
             this.Controls.Add(this.User_view);
             this.Controls.Add(this.timeLb);
@@ -101,10 +104,10 @@
         }
 
         #endregion
-        private System.Windows.Forms.Label timeLb;
         protected System.Windows.Forms.TextBox User_view;
         protected System.Windows.Forms.Label label1;
         protected System.Windows.Forms.Timer timer1;
         protected System.Windows.Forms.Button exitBt;
+        protected System.Windows.Forms.Label timeLb;
     }
 }

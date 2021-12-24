@@ -78,6 +78,18 @@
     <Compile Include="Forms\registratura.Designer.cs">
       <DependentUpon>registratura.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\WritesSchedular.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\WritesSchedular.Designer.cs">
+      <DependentUpon>WritesSchedular.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Writes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Writes.Designer.cs">
+      <DependentUpon>Writes.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Forms\BaseWin.resx">
       <DependentUpon>BaseWin.cs</DependentUpon>
     </EmbeddedResource>
@@ -102,6 +114,12 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Forms\WritesSchedular.resx">
+      <DependentUpon>WritesSchedular.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Writes.resx">
+      <DependentUpon>Writes.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

@@ -64,6 +64,10 @@
             this.seeWritesBt = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
+            // exitBt
+            // 
+            this.exitBt.Location = new System.Drawing.Point(712, 403);
+            // 
             // textBox1
             // 
             this.textBox1.BackColor = System.Drawing.SystemColors.MenuText;
@@ -132,6 +136,7 @@
             this.schedularBt.TabIndex = 13;
             this.schedularBt.Text = "Расписание врачей";
             this.schedularBt.UseVisualStyleBackColor = true;
+            this.schedularBt.Click += new System.EventHandler(this.SchedularBt_Click);
             // 
             // changeBt
             // 
@@ -368,6 +373,7 @@
             this.writeBt.TabIndex = 11;
             this.writeBt.Text = "Записать на прием";
             this.writeBt.UseVisualStyleBackColor = true;
+            this.writeBt.Click += new System.EventHandler(this.WriteBt_Click);
             // 
             // seeWritesBt
             // 
@@ -378,12 +384,13 @@
             this.seeWritesBt.TabIndex = 38;
             this.seeWritesBt.Text = "Посмотреть записи";
             this.seeWritesBt.UseVisualStyleBackColor = true;
+            this.seeWritesBt.Click += new System.EventHandler(this.SeeWritesBt_Click);
             // 
             // registratura
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 578);
+            this.ClientSize = new System.Drawing.Size(799, 576);
             this.Controls.Add(this.seeWritesBt);
             this.Controls.Add(this.Num_polis);
             this.Controls.Add(this.label13);
@@ -420,6 +427,7 @@
             this.Controls.Add(this.textBox1);
             this.Name = "registratura";
             this.Text = "Окно регистратуры";
+            this.Controls.SetChildIndex(this.exitBt, 0);
             this.Controls.SetChildIndex(this.label1, 0);
             this.Controls.SetChildIndex(this.User_view, 0);
             this.Controls.SetChildIndex(this.textBox1, 0);

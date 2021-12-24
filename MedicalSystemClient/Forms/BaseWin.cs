@@ -14,6 +14,14 @@ namespace MedicalSystemClient
 {
     public partial class BaseWin : Form
     {
+        protected Socket socket;
+        protected string client_name; //локальное имя данной клиентской машины
+        protected string passw; //локальный пароль данной клиентской машины
+        protected byte[] data; //буфер данных для чтения и отправки
+        protected List<string> user_fio = new List<string>(); //список ФИО пользователя
+        protected StringBuilder builder = new StringBuilder(); //конструктор строк сообщений
+        protected List<string> results = new List<string>(); //список результатов запроса к БД
+
         public BaseWin()
         {
             InitializeComponent();
@@ -40,6 +48,50 @@ namespace MedicalSystemClient
             this.timeLb.Location = BtTime;
             this.User_view.Location = BtUser;
             this.label1.Location = BtLabel;
+        }
+
+        protected string DoTransfer(string message)
+        {
+            data = Encoding.Unicode.GetBytes(message);
+            //отправляем сообщение серверу
+            socket.Send(data);
+
+            data = new byte[256];
+            StringBuilder builder = new StringBuilder();
+            int bytes = 0;
+            //пока есть данные, читаем их
+            do
+            {
+                bytes = socket.Receive(data, data.Length, 0);
+                builder.Append(Encoding.Unicode.GetString(data, 0, bytes));
+            }
+            while (socket.Available > 0);
+            //преобразуем все ответы в строковый вид
+            string answer = builder.ToString();
+            return answer;
+        }
+
+        protected List<string> CheckServerAnswer(string mes)
+        {
+            //если сообщение имеет неправильный формат
+            if (!mes.StartsWith("@") && !mes.EndsWith("//@"))
+            {
+                MessageBox.Show("Ошибка связи с сервером");
+                return new List<string>();
+            }
+            results = mes.Split(';').ToList();
+            //если сервер прислал не тому клиенту
+            if (!results[1].Equals(this.client_name))
+            {
+                MessageBox.Show("Ошибка связи с сервером");
+                return new List<string>();
+            }
+            if (results[2] == "в БД отсутствуют данные по вашему запросу")
+            {
+                MessageBox.Show("В БД отсутствуют данные по вашему запросу");
+                return new List<string>();
+            }
+            return results;
         }
     }
 }
