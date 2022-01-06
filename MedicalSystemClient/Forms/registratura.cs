@@ -221,7 +221,7 @@ namespace MedicalSystemClient
 
         private void SeeWritesBt_Click(object sender, EventArgs e)
         {
-            WritesSchedular writes = new WritesSchedular();
+            WritesSchedular writes = new WritesSchedular(this.user_fio, socket, this.client_name, this.passw);
             this.Close();
             writes.Show();
         }

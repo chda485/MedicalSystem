@@ -25,3 +25,13 @@ E:\prog\c#\projects\МедСистема\MedicalSystemServer\obj\Debug\MedicalSy
 E:\prog\c#\projects\МедСистема\MedicalSystemServer\obj\Debug\MedicalSystemServer.csproj.CoreCompileInputs.cache
 E:\prog\c#\projects\МедСистема\MedicalSystemServer\obj\Debug\MedicalSystemServer.exe
 E:\prog\c#\projects\МедСистема\MedicalSystemServer\obj\Debug\MedicalSystemServer.pdb
+G:\prog\c#\projects\МедСистема\MedicalSystemServer\bin\Debug\Patients.mdf
+G:\prog\c#\projects\МедСистема\MedicalSystemServer\bin\Debug\Patients_log.ldf
+G:\prog\c#\projects\МедСистема\MedicalSystemServer\bin\Debug\MedicalSystemServer.exe.config
+G:\prog\c#\projects\МедСистема\MedicalSystemServer\bin\Debug\MedicalSystemServer.exe
+G:\prog\c#\projects\МедСистема\MedicalSystemServer\bin\Debug\MedicalSystemServer.pdb
+G:\prog\c#\projects\МедСистема\MedicalSystemServer\obj\Debug\MedicalSystemServer.csproj.CoreCompileInputs.cache
+G:\prog\c#\projects\МедСистема\MedicalSystemServer\obj\Debug\MedicalSystemServer.exe
+G:\prog\c#\projects\МедСистема\MedicalSystemServer\obj\Debug\MedicalSystemServer.pdb
+G:\prog\c#\projects\МедСистема\MedicalSystemServer\bin\Debug\ServiceDB.mdf
+G:\prog\c#\projects\МедСистема\MedicalSystemServer\bin\Debug\ServiceDB_log.ldf

@@ -12,8 +12,8 @@ namespace MedicalSystemServer
     public class ThreadServer
     {
         private Socket socket;
-        private string connection = @"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=Patients;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
-        private string connection2 = @"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=ServiceDB;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
+        private string connection = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=G:\prog\c#\projects\МедСистема\MedicalSystemServer\Patients.mdf;Integrated Security=True";
+        private string connection2 = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=G:\prog\c#\projects\МедСистема\MedicalSystemServer\ServiceDB.mdf;Integrated Security=True";
         //список для хранения результатов запроса
         private List <string> results = new List<string>();
         //список составных элементов запроса
@@ -60,6 +60,7 @@ namespace MedicalSystemServer
                     while (socket.Available > 0);
 
                     string Queary = builder.ToString();
+                    Console.WriteLine(Queary);
                     //обнуляем предыдущие ответы клиенту
                     this.answer = "@";
                     //проверяем тип сообщения
@@ -115,8 +116,8 @@ namespace MedicalSystemServer
                         }
                         else
                         {
-                            results[0] = "такой пользователь отсутствует в системе";
-                            answer += DateTime.Now.ToShortTimeString() + ';' + message_list[1].ToString() + ";такой пользователь отсутсвует в системе//@";
+                            results.Add("такой пользователь отсутствует в системе");
+                            answer += DateTime.Now.ToShortTimeString() + ';' + message_list[1].ToString() + ";такой пользователь отсутствует в системе//@";
                         }
                     }
                     //если запрос на выборку данных
@@ -185,13 +186,12 @@ namespace MedicalSystemServer
 			}
             socket.Close();
         }
-        
-    private void ConnectToDb(string queary, string queary_type)
-    {
-        //очищаем результаты предыдущих запросов
-        results.Clear();
-        //соединяемся с БД
-        using (SqlConnection connect = new SqlConnection(this.connection))
+        private void ConnectToDb(string queary, string queary_type)
+        {
+            //очищаем результаты предыдущих запросов
+            results.Clear();
+            //соединяемся с БД
+            using (SqlConnection connect = new SqlConnection(this.connection))
             {
                 connect.Open();
                 //если поступил запрос на выборку
@@ -215,7 +215,7 @@ namespace MedicalSystemServer
                                 str += Convert.ToString(reader.GetValue(i));
                                 str += '|'; 
                             }
-							str = str.Substring(0, str.Length - 1);
+						    str = str.Substring(0, str.Length - 1);
                             results.Add(str);
                         }
                     }
@@ -245,49 +245,51 @@ namespace MedicalSystemServer
                 }
                 connect.Close();
             }
-    }
-
-    private bool CheckIsTrueUser(string userMessage)
-    {
-        //выполняем запрос
-        this.ConnectToDb(userMessage, "select_user");
-        //проверяем, есть ли результаты (есть ли такой пользователь)
-        if (results.Count == 0)
-            return false;
-        return true;
-    }
-
-    private int MessageParser(string message)
-    {
-        //проверяем, что сообщение имеет верный формат
-        if (!message.StartsWith("@") && !message.EndsWith("//@"))
-        {
-            Console.WriteLine(DateTime.Now.ToShortTimeString() + " : неверный формат сообшения");
-            this.error = "Uncorrect format";
-            return -1;
         }
-        string[] list = message.Split(';');
-        this.message_list = list.ToList();
-        //проверяем, действительно ли это клиент приложения
-        if (!password_list.Contains(this.message_list[2]))
+
+        private bool CheckIsTrueUser(string userMessage)
         {
-            Console.WriteLine(DateTime.Now.ToShortTimeString() + " : попытка несанкционированного доступа");
-            this.error = "Attempt to burglar";
-            return -1;   
+            //выполняем запрос
+            this.ConnectToDb(userMessage, "select_user");
+            //проверяем, есть ли результаты (есть ли такой пользователь)
+            if (results.Count == 0)
+            {
+                return false;
+            }
+            return true;
         }
-        string type = this.message_list[0];
-        //убираем первый символ формата сообщения
-        this.message_list[0] = type.Substring(1);
-        string queary = this.message_list[4];
-        //убираем символы в конце
-        this.message_list[4] = queary.Substring(0, queary.Length - 3);
-        return typeDict[this.message_list[0]];
-    }
+
+        private int MessageParser(string message)
+        {
+            //проверяем, что сообщение имеет верный формат
+            if (!message.StartsWith("@") && !message.EndsWith("//@"))
+            {
+                Console.WriteLine(DateTime.Now.ToShortTimeString() + " : неверный формат сообшения");
+                this.error = "Uncorrect format";
+                return -1;
+            }
+            string[] list = message.Split(';');
+            this.message_list = list.ToList();
+            //проверяем, действительно ли это клиент приложения
+            if (!password_list.Contains(this.message_list[2]))
+            {
+                Console.WriteLine(DateTime.Now.ToShortTimeString() + " : попытка несанкционированного доступа");
+                this.error = "Attempt to burglar";
+                return -1;   
+            }
+            string type = this.message_list[0];
+            //убираем первый символ формата сообщения
+            this.message_list[0] = type.Substring(1);
+            string queary = this.message_list[4];
+            //убираем символы в конце
+            this.message_list[4] = queary.Substring(0, queary.Length - 3);
+            return typeDict[this.message_list[0]];
+        }
 	
-	private void Make_Log(string type, int volume)
-	{
-		using (SqlConnection connect = new SqlConnection(this.connection2))
-			{
+	    private void Make_Log(string type, int volume)
+	    {
+		    using (SqlConnection connect = new SqlConnection(this.connection2))
+            {
                 connect.Open();
 				string user = this.message_list[1];
 				string con_time = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
@@ -320,7 +322,7 @@ namespace MedicalSystemServer
                         case "date already existed": server_reply = "Attempt to insert existing data"; break;
                     }
                     queary = String.Format(@"INSERT INTO Responses (User_name, Response_time, Response, Response_volume)
-										     VALUES ('{0}', '{1}', '{2}', '{3}')", user, con_time, server_reply, volume);
+										        VALUES ('{0}', '{1}', '{2}', '{3}')", user, con_time, server_reply, volume);
                 }
                 else if (type == "error")
                 {
@@ -347,6 +349,6 @@ namespace MedicalSystemServer
                 if (num == 0)
                     Console.WriteLine("Error insert to Service DB");
             }
-	}	
+	    }	
    }
 }

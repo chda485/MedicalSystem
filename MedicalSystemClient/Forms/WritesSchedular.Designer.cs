@@ -31,7 +31,7 @@
             this.find_doctor = new System.Windows.Forms.Button();
             this.schedule = new System.Windows.Forms.TableLayoutPanel();
             this.find_patient = new System.Windows.Forms.Button();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
+            this.days = new System.Windows.Forms.DateTimePicker();
             this.SuspendLayout();
             // 
             // exitBt
@@ -104,32 +104,35 @@
             this.find_patient.Text = "Найти по пациенту";
             this.find_patient.UseVisualStyleBackColor = true;
             // 
-            // dateTimePicker1
+            // days
             // 
-            this.dateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dateTimePicker1.Location = new System.Drawing.Point(559, 123);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(200, 20);
-            this.dateTimePicker1.TabIndex = 26;
+            this.days.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.days.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.days.Location = new System.Drawing.Point(539, 117);
+            this.days.Name = "days";
+            this.days.Size = new System.Drawing.Size(200, 26);
+            this.days.TabIndex = 26;
+            this.days.ValueChanged += new System.EventHandler(this.Month_list_ValueChanged);
             // 
             // WritesSchedular
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 595);
-            this.Controls.Add(this.dateTimePicker1);
+            this.Controls.Add(this.days);
             this.Controls.Add(this.find_patient);
             this.Controls.Add(this.find_doctor);
             this.Controls.Add(this.schedule);
             this.Name = "WritesSchedular";
             this.Text = "WritesSchedular";
+            this.Controls.SetChildIndex(this.timeLb, 0);
             this.Controls.SetChildIndex(this.label1, 0);
             this.Controls.SetChildIndex(this.User_view, 0);
             this.Controls.SetChildIndex(this.exitBt, 0);
             this.Controls.SetChildIndex(this.schedule, 0);
             this.Controls.SetChildIndex(this.find_doctor, 0);
             this.Controls.SetChildIndex(this.find_patient, 0);
-            this.Controls.SetChildIndex(this.dateTimePicker1, 0);
+            this.Controls.SetChildIndex(this.days, 0);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -139,6 +142,6 @@
         private System.Windows.Forms.Button find_doctor;
         private System.Windows.Forms.TableLayoutPanel schedule;
         private System.Windows.Forms.Button find_patient;
-        private System.Windows.Forms.DateTimePicker dateTimePicker1;
+        private System.Windows.Forms.DateTimePicker days;
     }
 }

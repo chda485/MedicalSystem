@@ -71,12 +71,12 @@ namespace MedicalSystemClient
             return answer;
         }
 
-        protected List<string> CheckServerAnswer(string mes)
+        protected List<string> CheckServerAnswer(string mes, bool writes=false)
         {
             //если сообщение имеет неправильный формат
             if (!mes.StartsWith("@") && !mes.EndsWith("//@"))
             {
-                MessageBox.Show("Ошибка связи с сервером");
+                MessageBox.Show("Ошибка связи с сервером. Неверный формат сообщения");
                 return new List<string>();
             }
             results = mes.Split(';').ToList();
@@ -88,8 +88,13 @@ namespace MedicalSystemClient
             }
             if (results[2] == "в БД отсутствуют данные по вашему запросу")
             {
-                MessageBox.Show("В БД отсутствуют данные по вашему запросу");
-                return new List<string>();
+                if (writes == true)
+                    return new List<string>();
+                else
+                {
+                    MessageBox.Show("В БД отсутствуют данные по вашему запросу");
+                    return new List<string>();
+                }
             }
             return results;
         }

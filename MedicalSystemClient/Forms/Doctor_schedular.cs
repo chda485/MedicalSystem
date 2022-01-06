@@ -21,7 +21,6 @@ namespace MedicalSystemClient
             {"Июль", 32 }, {"Август", 32}, {"Сентябрь", 31},
             {"Октябрь", 32 }, {"Ноябрь", 31}, {"Декабрь", 32}
         };
-        private int columns_num = 0; //переменная для корректной работы смены расписания
         public Doctor_schedular(List<string> fio, Socket socket, string name, string passw)
         {
             InitializeComponent();
@@ -41,8 +40,8 @@ namespace MedicalSystemClient
         {
             int num = this.month_list.SelectedIndex + 1;
             string queary = String.Format(@"SELECT S.Day, S.Work_time, P.Family, P.Name, P.Otchestvo 
-                                                       FROM Doctor_schedular S, Personal P WHERE
-                                                       S.Id_user=P.Id AND MONTH(S.Day)='{0}'", num);
+                                            FROM Doctor_schedular S, Personal P WHERE
+                                            S.Id_user=P.Id AND MONTH(S.Day)='{0}'", num);
             string message = String.Format("@select;{0};{1};{2};{3}//@",
                                         this.client_name, this.passw, DateTime.Now.ToShortTimeString(),
                                         queary);
